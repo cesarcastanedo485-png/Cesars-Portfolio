@@ -1,0 +1,40 @@
+{
+  "name": "cesars-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "clean:next": "node ./scripts/clean-next-cache.cjs",
+    "reinstall:swc": "node ./scripts/reinstall-swc.cjs",
+    "dev": "node ./node_modules/next/dist/bin/next dev --webpack",
+    "dev:fresh": "node ./scripts/clean-next-cache.cjs && node ./node_modules/next/dist/bin/next dev --webpack",
+    "build": "node ./node_modules/next/dist/bin/next build --webpack",
+    "start": "node ./node_modules/next/dist/bin/next start",
+    "lint": "tsc --noEmit",
+    "lint:eslint": "eslint ."
+  },
+  "dependencies": {
+    "@swc/helpers": "0.5.15",
+    "@next/swc-win32-x64-msvc": "^16.2.1",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.15.0",
+    "lucide-react": "^0.460.0",
+    "next": "16.2.1",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "tailwind-merge": "^2.5.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "es-iterator-helpers": "^1.3.1",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.1",
+    "eslint-plugin-react": "^7.37.5",
+    "tailwindcss": "^4",
+    "typescript": "5.9.3",
+    "typescript-eslint": "^8.57.1"
+  }
+}

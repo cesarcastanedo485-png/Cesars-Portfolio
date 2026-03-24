@@ -1,0 +1,99 @@
+{
+  "site": {
+    "title": "Cesar | Portfolio",
+    "description": "Websites, apps, and games — selected work and experiments by Cesar.",
+    "author": "Cesar",
+    "keywords": [
+      "portfolio",
+      "web developer",
+      "game developer",
+      "Next.js",
+      "React"
+    ],
+    "ogImage": "/og.svg",
+    "twitterHandle": "@cesar",
+    "canonicalBase": "https://cesar-portfolio.vercel.app"
+  },
+  "nav": {
+    "brandLabel": "Cesar",
+    "links": [
+      { "label": "Work", "href": "#work" },
+      { "label": "Games", "href": "#games" },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/yourusername",
+        "external": true
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/yourprofile",
+        "external": true
+      },
+      {
+        "label": "TikTok",
+        "href": "https://www.tiktok.com/@yourhandle",
+        "external": true
+      }
+    ]
+  },
+  "hero": {
+    "screenReaderTitle": "Portfolio",
+    "titlePart1": "Port",
+    "titlePart2": "folio",
+    "tagline": "Crafting websites, apps, and games"
+  },
+  "websites": {
+    "sectionEyebrow": "Selected work",
+    "featuredBadge": "Glass-morphism",
+    "items": [
+      { "id": 1, "label": "Web builds", "active": false },
+      { "id": 2, "label": "Featured", "active": true },
+      { "id": 3, "label": "Experiments", "active": false },
+      { "id": 4, "label": "Archive", "active": false }
+    ]
+  },
+  "quote": {
+    "text": "We are the music makers, and we are the dreamers of dreams"
+  },
+  "games": {
+    "sectionTitle": "Games",
+    "sectionEyebrow": "Shipped & in progress",
+    "items": [
+      {
+        "id": 1,
+        "title": "Next release",
+        "price": "In development",
+        "sourceAvailable": false,
+        "gradient": "from-amber-600/80 to-orange-900/80"
+      },
+      {
+        "id": 2,
+        "title": "Dungeon Master Lite",
+        "price": "Web · TikTok chat",
+        "sourceAvailable": true,
+        "sourceHref": "https://github.com/yourusername/dungeon-master-lite",
+        "gradient": "from-violet-600/80 to-purple-900/80",
+        "iconSrc": "/games/dungeon-master-lite.png",
+        "iconAlt": "Dungeon Master Lite app icon — neon d20 and chat motif"
+      },
+      {
+        "id": 3,
+        "title": "Arcade concept",
+        "price": "Prototype",
+        "sourceAvailable": false,
+        "gradient": "from-rose-500/80 to-amber-800/80"
+      },
+      {
+        "id": 4,
+        "title": "More soon",
+        "price": "Coming soon",
+        "sourceAvailable": false,
+        "gradient": "from-cyan-600/80 to-blue-900/80"
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "Cesar. All rights reserved.",
+    "note": "Content lives in content/portfolio.json — edit there and push to redeploy (see docs/CONTENT_WORKFLOW.md)."
+  }
+}
