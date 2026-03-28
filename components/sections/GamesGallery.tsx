@@ -11,6 +11,34 @@ import { gamesSection, type GameItem } from "@/lib/content";
 
 const games: GameItem[] = gamesSection.items;
 
+/** Summary + tech tags (price is rendered by the parent row). */
+function GameMeta({ game }: { game: GameItem }) {
+  return (
+    <>
+      {game.summary ? (
+        <p className="text-xs leading-relaxed text-muted-foreground/95">
+          {game.summary}
+        </p>
+      ) : null}
+      {game.tags?.length ? (
+        <ul
+          className="flex flex-wrap gap-1.5"
+          aria-label={`Tech for ${game.title}`}
+        >
+          {game.tags.map((tag) => (
+            <li
+              key={tag}
+              className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-white/75"
+            >
+              {tag}
+            </li>
+          ))}
+        </ul>
+      ) : null}
+    </>
+  );
+}
+
 function SourceAvailableButton({ href }: { href?: string }) {
   const inner = (
     <>
@@ -106,6 +134,7 @@ export function GamesGallery() {
                   {/* Meta + actions — separate from the icon, minimal chrome */}
                   <div className="flex flex-col gap-2.5 border-t border-white/5 bg-black/50 px-4 py-3">
                     <p className="text-xs text-muted-foreground">{game.price}</p>
+                    <GameMeta game={game} />
                     {game.sourceAvailable && (
                       <SourceAvailableButton href={game.sourceHref} />
                     )}
@@ -133,13 +162,15 @@ export function GamesGallery() {
                   )}
                 </div>
                 <CardFooter className="flex flex-col items-start gap-3 border-t border-white/10 bg-black/20 p-4">
-                  <span className="text-sm font-medium text-foreground">
-                    {game.price}
-                  </span>
+                  <div className="flex w-full flex-col gap-2">
+                    <span className="text-sm font-medium text-foreground">
+                      {game.price}
+                    </span>
+                    <GameMeta game={game} />
+                  </div>
                   {game.sourceAvailable && (
                     <SourceAvailableButton href={game.sourceHref} />
                   )}
-
                 </CardFooter>
               </Card>
             );

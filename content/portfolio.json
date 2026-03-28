@@ -19,9 +19,10 @@
     "links": [
       { "label": "Work", "href": "#work" },
       { "label": "Games", "href": "#games" },
+      { "label": "Contact", "href": "#contact" },
       {
         "label": "GitHub",
-        "href": "https://github.com/yourusername",
+        "href": "https://github.com/cesarcastanedo485-png",
         "external": true
       },
       {
@@ -44,12 +45,56 @@
   },
   "websites": {
     "sectionEyebrow": "Selected work",
-    "featuredBadge": "Glass-morphism",
+    "sectionIntro": "Apps and sites you’re building — placeholder art lives in public/work/*.svg; swap paths for real screenshots when you have them. Tech stacks below are starter labels: edit content/portfolio.json to match each repo.",
+    "featuredBadge": "Featured",
     "items": [
-      { "id": 1, "label": "Web builds", "active": false },
-      { "id": 2, "label": "Featured", "active": true },
-      { "id": 3, "label": "Experiments", "active": false },
-      { "id": 4, "label": "Archive", "active": false }
+      {
+        "id": 1,
+        "title": "Cesars Portfolio (this site)",
+        "role": "Portfolio · Next.js App Router",
+        "summary": "This repo: JSON-driven content, case-study cards, games grid, contact, SEO routes — tuned for dark UI and fast deploys on Vercel.",
+        "tags": ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+        "featured": true,
+        "imageSrc": "/work/portfolio.svg",
+        "imageAlt": "Placeholder icon — browser window with check mark",
+        "links": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/cesarcastanedo485-png/Cesar-s-Portfolio",
+            "external": true
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Website One",
+        "role": "Marketing / brochure site",
+        "summary": "Primary landing and story for your product or personal brand — hero, sections, and CTAs wired for analytics and iteration.",
+        "tags": ["Next.js", "Tailwind CSS", "Vercel"],
+        "imageSrc": "/work/website-one.svg",
+        "imageAlt": "Placeholder icon — browser window with focus mark",
+        "links": []
+      },
+      {
+        "id": 3,
+        "title": "Linda",
+        "role": "App · conversational UI",
+        "summary": "Voice or chat-forward experience named Linda — focused flows, clear states, and hooks for AI or scripted backends when you connect them.",
+        "tags": ["React", "TypeScript", "Web Speech API", "WebSockets"],
+        "imageSrc": "/work/linda.svg",
+        "imageAlt": "Placeholder icon — L mark and chat bubble",
+        "links": []
+      },
+      {
+        "id": 4,
+        "title": "3D Player",
+        "role": "Viewer · WebGL",
+        "summary": "Embeddable 3D player shell — camera-friendly controls, loading states, and a path to glTF/Three.js or R3F when you wire assets.",
+        "tags": ["Three.js", "React Three Fiber", "WebGL", "Vite"],
+        "imageSrc": "/work/3d-player.svg",
+        "imageAlt": "Placeholder icon — isometric cube",
+        "links": []
+      }
     ]
   },
   "quote": {
@@ -61,36 +106,56 @@
     "items": [
       {
         "id": 1,
-        "title": "Next release",
-        "price": "In development",
+        "title": "Cursor Stream Game",
+        "price": "Prototype · stream + play",
+        "summary": "A small game loop built for streaming or Cursor-side demos — quick rounds, readable UI on camera, and room for chat-driven hooks.",
+        "tags": ["Next.js", "Canvas", "WebSockets"],
         "sourceAvailable": false,
-        "gradient": "from-amber-600/80 to-orange-900/80"
+        "gradient": "from-cyan-600/80 to-slate-900/90",
+        "iconSrc": "/games/cursor-stream-game.svg",
+        "iconAlt": "Placeholder icon — cursor mask and stream waves"
       },
       {
         "id": 2,
-        "title": "Dungeon Master Lite",
-        "price": "Web · TikTok chat",
-        "sourceAvailable": true,
-        "sourceHref": "https://github.com/yourusername/dungeon-master-lite",
-        "gradient": "from-violet-600/80 to-purple-900/80",
-        "iconSrc": "/games/dungeon-master-lite.png",
-        "iconAlt": "Dungeon Master Lite app icon — neon d20 and chat motif"
+        "title": "Chatling Ranch",
+        "price": "In development · social sim",
+        "summary": "Ranch-themed chat and progression — think cozy multiplayer energy with lightweight real-time messaging and playful state.",
+        "tags": ["React", "Node.js", "WebSockets"],
+        "sourceAvailable": false,
+        "gradient": "from-amber-600/80 to-orange-900/80",
+        "iconSrc": "/games/chatling-ranch.svg",
+        "iconAlt": "Placeholder icon — barn and chat bubble"
       },
       {
         "id": 3,
-        "title": "Arcade concept",
-        "price": "Prototype",
-        "sourceAvailable": false,
-        "gradient": "from-rose-500/80 to-amber-800/80"
+        "title": "Dungeon Master Lite",
+        "price": "Web · TikTok chat",
+        "summary": "Tabletop helper for DMs — chat-forward UX, dice-friendly flows, and a path to ship on TikTok or the open web.",
+        "tags": ["React", "Chat UI", "TikTok"],
+        "sourceAvailable": true,
+        "sourceHref": "https://github.com/yourusername/dungeon-master-lite",
+        "gradient": "from-violet-600/80 to-purple-900/80",
+        "iconSrc": "/games/dungeon-master-lite.svg",
+        "iconAlt": "Dungeon Master Lite — placeholder d20 icon"
       },
       {
         "id": 4,
         "title": "More soon",
         "price": "Coming soon",
+        "summary": "Reserve this slot for the next ship — add iconSrc and copy when the project is ready.",
         "sourceAvailable": false,
         "gradient": "from-cyan-600/80 to-blue-900/80"
       }
     ]
+  },
+  "contact": {
+    "sectionEyebrow": "Contact",
+    "headline": "Let’s build something",
+    "body": "Open to freelance and full-time roles that need strong UI, performance, and clear communication. Replace the placeholder email with yours before you ship.",
+    "email": "hello@example.com",
+    "emailButtonLabel": "Email me",
+    "emailSubject": "Hello — from your portfolio",
+    "secondaryLinks": []
   },
   "footer": {
     "copyright": "Cesar. All rights reserved.",

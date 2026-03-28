@@ -4,6 +4,7 @@ import { Hero } from "@/components/sections/Hero";
 import { WebsitesGallery } from "@/components/sections/WebsitesGallery";
 import { QuoteSection } from "@/components/sections/QuoteSection";
 import { GamesGallery } from "@/components/sections/GamesGallery";
+import { ContactSection } from "@/components/sections/ContactSection";
 import { heroContent } from "@/lib/content";
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
         <WebsitesGallery />
         <QuoteSection />
         <GamesGallery />
+        <ContactSection />
       </main>
       <Footer />
     </div>

@@ -1,9 +1,108 @@
-import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { websitesSection } from "@/lib/content";
+import { websitesSection, type WorkItem } from "@/lib/content";
+
+function WorkMedia({ item, badge }: { item: WorkItem; badge?: string }) {
+  const hasImage = Boolean(item.imageSrc);
+
+  return (
+    <div
+      className={cn(
+        "relative bg-[#06080f]",
+        item.featured
+          ? "aspect-[16/10] min-h-[200px] md:aspect-auto md:min-h-[280px] md:w-1/2 md:shrink-0 md:self-stretch"
+          : "aspect-[16/10]"
+      )}
+    >
+      {hasImage && item.imageSrc ? (
+        <Image
+          src={item.imageSrc}
+          alt={item.imageAlt ?? item.title}
+          fill
+          sizes={
+            item.featured
+              ? "(max-width: 768px) 100vw, 55vw"
+              : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          }
+          className="object-cover"
+          priority={item.featured}
+        />
+      ) : (
+        <div
+          className={cn(
+            "absolute inset-0 bg-gradient-to-br",
+            item.gradient ?? "from-white/15 to-white/5"
+          )}
+        />
+      )}
+      <div
+        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 md:from-black/40 md:to-transparent md:via-transparent"
+        aria-hidden
+      />
+      {item.featured && badge ? (
+        <span className="absolute left-3 top-3 rounded-full border border-white/20 bg-black/50 px-3 py-1 text-xs font-medium text-white/90 backdrop-blur-sm">
+          {badge}
+        </span>
+      ) : null}
+    </div>
+  );
+}
+
+function WorkLinks({ links }: { links: WorkItem["links"] }) {
+  if (!links.length) {
+    return (
+      <p className="text-xs italic text-muted-foreground">More details soon.</p>
+    );
+  }
+
+  return (
+    <div className="flex flex-wrap gap-2">
+      {links.map((link) => {
+        const external = link.external ?? /^https?:\/\//.test(link.href);
+        const className = cn(
+          buttonVariants({ variant: "outline", size: "sm" }),
+          "border-white/20 text-foreground hover:border-cyan-500/40 hover:bg-cyan-950/20"
+        );
+
+        if (external) {
+          return (
+            <a
+              key={`${link.label}-${link.href}`}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(className, "inline-flex gap-1")}
+            >
+              {link.label}
+              <ArrowUpRight className="size-3.5 opacity-70" aria-hidden />
+            </a>
+          );
+        }
+
+        return (
+          <Link
+            key={`${link.label}-${link.href}`}
+            href={link.href}
+            className={className}
+          >
+            {link.label}
+          </Link>
+        );
+      })}
+    </div>
+  );
+}
 
 export function WebsitesGallery() {
-  const { sectionEyebrow, featuredBadge, items } = websitesSection;
+  const { sectionEyebrow, sectionIntro, featuredBadge, items } =
+    websitesSection;
+  const ordered = [...items].sort(
+    (a, b) => Number(!!b.featured) - Number(!!a.featured)
+  );
 
   return (
     <section
@@ -11,49 +110,71 @@ export function WebsitesGallery() {
       className="py-16 scroll-mt-24"
       aria-labelledby="work-heading"
     >
-      <div className="container mx-auto px-6">
-        <div className="mb-6 flex justify-end">
-          <h2
-            id="work-heading"
-            className="text-sm font-medium text-muted-foreground"
-          >
-            {sectionEyebrow}
-          </h2>
+      <div className="container mx-auto max-w-6xl px-6">
+        <div className="mb-10 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2
+              id="work-heading"
+              className="text-2xl font-bold tracking-tight text-foreground md:text-3xl"
+            >
+              {sectionEyebrow}
+            </h2>
+            {sectionIntro ? (
+              <p className="mt-2 max-w-2xl text-sm text-muted-foreground md:text-base">
+                {sectionIntro}
+              </p>
+            ) : null}
+          </div>
         </div>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {items.map((site) => (
+
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          {ordered.map((item) => (
             <Card
-              key={site.id}
+              key={item.id}
               className={cn(
-                "transition-all duration-300",
-                site.active
-                  ? "scale-105 border border-white/10 bg-black/30 shadow-2xl backdrop-blur-xl hover:scale-[1.02] hover:border-cyan-500/30"
-                  : "hover:border-white/15 hover:bg-white/5"
+                "overflow-hidden border-white/10 bg-black/35 shadow-none backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:shadow-[0_0_0_1px_rgba(34,211,238,0.12)]",
+                item.featured && "md:col-span-2"
               )}
             >
-              <CardContent className="flex flex-col items-center justify-center p-8">
-                {site.active && featuredBadge ? (
-                  <span className="mb-4 text-xs font-medium text-white/80">
-                    {featuredBadge}
-                  </span>
-                ) : null}
-                <div className="mb-4 flex gap-2">
-                  {[1, 2, 3].map((i) => (
-                    <div
-                      key={i}
-                      className="h-12 w-12 rounded-lg bg-gradient-to-br from-white/10 to-white/5"
-                    />
-                  ))}
-                </div>
-                <span
+              <div
+                className={cn(
+                  "flex h-full flex-col",
+                  item.featured && "md:flex-row"
+                )}
+              >
+                <WorkMedia item={item} badge={featuredBadge} />
+                <div
                   className={cn(
-                    "text-sm",
-                    site.active ? "text-white" : "text-muted-foreground"
+                    "flex flex-1 flex-col gap-3 p-5 sm:p-6",
+                    item.featured && "md:justify-center md:py-8"
                   )}
                 >
-                  {site.label}
-                </span>
-              </CardContent>
+                  <div className="space-y-1">
+                    <h3 className="text-lg font-semibold tracking-tight text-white sm:text-xl">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs font-medium uppercase tracking-wide text-cyan-400/90">
+                      {item.role}
+                    </p>
+                  </div>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    {item.summary}
+                  </p>
+                  {item.tags?.length ? (
+                    <ul className="flex flex-wrap gap-1.5" aria-label="Technologies">
+                      {item.tags.map((tag) => (
+                        <li
+                          key={tag}
+                          className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-xs text-white/80"
+                        >
+                          {tag}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+                  <WorkLinks links={item.links} />
+                </div>
+              </div>
             </Card>
           ))}
         </div>
