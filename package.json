@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "@swc/helpers": "0.5.15",
-    "@next/swc-win32-x64-msvc": "^16.2.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.15.0",
